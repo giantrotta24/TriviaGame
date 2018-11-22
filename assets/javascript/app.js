@@ -5,14 +5,24 @@ $(document).ready(function () {
     var correctAnswer = ["Bernie Kosar", "Jim Brown"];
     var questionCounter = 0;
 
-
-
-
     //start game button click function
     $(".button").click(function () {
         $(".button").hide();
         startGame();
-    })
+    });
+
+    //answer click function
+    $(".answer").click(function() {
+        selectedAnswer = $(this).text();
+        if (selectedAnswer === correctAnswer[questionCounter]) {
+            // alert("correct!")
+            correctAnswer();
+
+        }
+        else {
+            alert("wrong!")
+        }
+    });
 
     //30 second countdown function
     function countDown() {
@@ -25,14 +35,13 @@ $(document).ready(function () {
             if (count <= 0) {
                 clearInterval(counter);
                 //counter ended, do something here
-                startGame();
+                
             }
 
             
             document.getElementById("timer").innerHTML = "" + count;
         };
     }
-
 
     //start game function
     function startGame() {
@@ -48,6 +57,14 @@ $(document).ready(function () {
         $("#answerThree").html(answerArray[questionCounter][2]);
         $("#answerFour").html(answerArray[questionCounter][3]);
     }
+
+    //correct answer function
+    function correctAnswer() {
+        
+    }
+
+
+
 
     //out of time function
     // function outOfTime(){

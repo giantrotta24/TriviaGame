@@ -69,6 +69,13 @@ body {
     background-color: #311D00;
 }
 
+.first-answer:hover {
+    background: #FF3C00;
+}
+.answerP:hover {
+    background: #FF3C00;
+  }
+
 h2 {
     text-align: center;
     font-size: 2em;
