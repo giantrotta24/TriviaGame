@@ -30,6 +30,43 @@ body {
     background-color: #eee;
     border: solid 2px #FF3C00;
     height: 400px;
+    align-content: center;
+}
+
+.statement{
+    margin-bottom: 10px;
+    padding: 20px;
+}
+
+.timer {
+    margin-top: 20px;
+}
+
+.questionBox {
+    display: none;
+    text-align: center;
+}
+
+.first-answer {
+    margin-top: 0;
+    align-content: center;
+    padding: 10px;
+    height: 20px;
+    color: white;
+    padding-left: 14px;
+    border-radius: 4px;
+    background-color: #311D00;
+}
+
+.answerP {
+    margin-top: 20px;
+    align-content: center;
+    padding: 10px;
+    height: 20px;
+    color: white;
+    padding-left: 14px;
+    border-radius: 4px;
+    background-color: #311D00;
 }
 
 h2 {
