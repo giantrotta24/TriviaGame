@@ -17,6 +17,11 @@ $(document).ready(function () {
     var questionCounter = 0;
     //timer count
     var count = 30;
+    
+    //final screen vars
+    var correct = 0;
+    var incorrect = 0;
+    var unanswered = 0;
 
 
     //questions HTML
@@ -51,12 +56,13 @@ $(document).ready(function () {
 
     //30 second countdown function
     function countDown() {
-        clearInterval(timer);
+        
+        count = 30;
         setInterval(timer, 1000); //1000 will  run it every 1 second
 
         function timer() {
             count--;
-            if (count <= 0) {
+            if (count === 0) {
                 clearInterval(timer);
                 //counter ended, do something here
 
@@ -70,6 +76,7 @@ $(document).ready(function () {
     //correct answer function
     function correctChoice() {
         // alert("good job homie");
+        correct++
 
 
         //hide questions
@@ -91,7 +98,7 @@ $(document).ready(function () {
     //incorrect answer function
     function incorrectChoice() {
         // alert("You wrong homie");
-
+        incorrect++
         //hide questions
         $(gameHTML).hide();
 
@@ -100,6 +107,9 @@ $(document).ready(function () {
 
         //display message
         $("#message").html(incorrectAnswerInfo[questionCounter]);
+
+        //display image
+        $("#image").html(incorrectImage[questionCounter]);
 
         //call wait function
         setTimeout(wait, 7000);
@@ -112,15 +122,53 @@ $(document).ready(function () {
             questionCounter++;
             $(".answerBox").hide();
 
-            clearInterval(timer);
+            
+            
 
             countDown();
 
             startGame();
 
         } else {
-            alert("Game Over!");
+            // alert("Game Over!");
+            clearInterval(timer);
+            //display final screen
+            finalScreen();
         }
+    }
+
+    function finalScreen() {
+
+        $(".answerBox").hide();
+
+        $(".finalScreen").show();
+
+        $("#stats").html("Game Over!");
+        $("#correct").html("Correct Answers: " + correct + "<br>");
+        $("#incorrect").html("Incorrect Answers: " + incorrect + "<br>");
+        $("#unanswered").html("Unanswered Questions: " + unanswered + "<br>");
+        $(".rebtn").show();
+
+        $(".rebtn").click(function () {
+
+            //hide button
+            $(".rebtn").hide();
+            $(".finalScreen").hide();
+            clearInterval(timer);
+            correct = 0;
+            incorrect = 0;
+            unanswered = 0;
+            count = 30;
+            questionCounter = 0;
+
+            //call start game function
+            $(".finalScreen").hide();
+            startGame();
+            countDown();
+
+        });
+
+
     }
 
     //start game function
