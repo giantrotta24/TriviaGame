@@ -54,18 +54,21 @@ $(document).ready(function () {
     $("body").on("click", ".answer", function (event) {
 
         selectedAnswer = $(this).text();
+        
 
         //correct answer
         if (selectedAnswer === correctAnswer[questionCounter]) {
 
             //correct answer function
             correctChoice();
+            
         }
         //incorrect answer
         else {
 
             //incorrect answer function
             incorrectChoice();
+            
         }
     });
 
@@ -147,12 +150,13 @@ $(document).ready(function () {
             count = 30;
 
             //start timer start game
+
             countDown();
             startGame();
 
         } else {
             //stop timer
-            clearInterval(timer);
+            clearInterval(intervalId);
 
             //display final screen
             finalScreen();
@@ -202,6 +206,8 @@ $(document).ready(function () {
 
         //display game
         $(gameHTML).show();
+
+        $("#timer").html(count);
 
         //display question
         $("#statement").html(questionArray[questionCounter]);
